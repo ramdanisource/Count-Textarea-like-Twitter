@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script>
+
+    $(window).load(function()
+      {
+
+        $('#charNum').text(140);
+        $('#charNum').css("color","red");
+
+        $('input[type="submit"]').attr('disabled', true);
+
+        $('#field').on('keyup',function() {
+
+            if($(this).val() != '') {
+                $('input[type="submit"]').attr('disabled' , false);
+            }else{
+                $('input[type="submit"]').attr('disabled' , true);
+            }
+
+        });
+      
+      }
+    );
+      
+      function countChar(val) {
+
+        var len = val.value.length;
+
+        if (len >= 140) {
+
+          val.value = val.value.substring(0, 140);
+
+        } else {
+
+          $('#charNum').text(140 - len);
+          //$('#charNum').css("color","red");
+
+          $("#myParagraph").css({
+
+            "backgroundColor": "black",
+            "color": "white"
+
+          });
+
+        }
+
+      };
+
+    </script>
+  </head>
+
+  <body>
+    <textarea id="field" onkeyup="countChar(this)" cols="30" rows="5"></textarea>
+    <div id="charNum"> </div><input type="submit" value="send" />
+    </body>
+
+</html>
